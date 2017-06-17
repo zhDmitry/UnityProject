@@ -5,24 +5,24 @@ using UnityEngine;
 public class LevelController : MonoBehaviour {
 
 	public static LevelController current;
-	void Awake() { 
-		current = this;
-	}
 	Vector3 startingPosition;
-	public void setStartPosition(Vector3 pos) { 
-		this.startingPosition = pos;
+
+	// Use this for initialization
+	void Awake () {
+		current = this;
 	}
 	public void onRabitDeath(HeroRabit rabit) {
 		//При смерті кролика повертаємо на початкову позицію
 		rabit.transform.position = this.startingPosition;
+		coins = 0;
 	}
-	// Use this for initialization
-	void Start () {
-		
+	public void setStartPosition(Vector3 pos) {
+		this.startingPosition = pos;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+
+	private int coins = 0;
+	public void addCoins(int n) {
+		coins += n;
 	}
 }
